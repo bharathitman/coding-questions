@@ -7,30 +7,46 @@ import java.util.Set;
 
 /**
  * Created by bharath on 3/9/2016.
+ *
+ * Get the First Non Repeating Character in a String
+ *
  */
+
 public class firstNonRepeatingChar {
 
     public static void main(String[] args) {
 
 
-        firstNonRepeatingCharacter("Geek for Geeks");
+        fNRC_LinkedHashSet("bharath");
 
     }
 
-    public static void firstNonRepeatingCharacter1(String s) {
+    /*
+        Uses Linked Hash Set
+     */
+    public static void fNRC_LinkedHashSet(String s) {
 
-        Set<Character> set = new LinkedHashSet<Character>();
+        Set<Character> set = new LinkedHashSet<>();
         for(Character c : s.toCharArray()) {
-
-
+            if(set.contains(c)) {
+                set.remove(c);
+            }
+            else {
+                set.add(c);
+            }
         }
 
+        System.out.println(set.iterator().next());
+
     }
 
+    /*
+        Uses a Traditional Hash Map
+     */
     public static void firstNonRepeatingCharacter(String s) {
 
 
-        Map<Character, Integer> m = new HashMap<Character, Integer>();
+        Map<Character, Integer> m = new HashMap<>();
 
         for (int i = 0; i < s.length(); i++) {
 
